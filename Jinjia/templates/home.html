@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <table border="1">
+    <thead>
+      <tr>
+        {% for header in data[0].keys() %}
+          {% if header != 'image' %}
+            <th>{{header}}</th>
+          {% endif %}
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+        <tr>
+          <td>{{row['title']}}</td>
+          <td>{{row['address']}}</td>
+          <td>{{row['description']}}</td>
+          <td>{{row['date']}}</td>
+          <td>{{row['seller']}}</td>
+          <td>{{row['price']}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
