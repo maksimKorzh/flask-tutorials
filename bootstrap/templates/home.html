@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>UK Real Estate properties</title>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script type = "text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script type = "text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type = "text/javascript"  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body class="bg-secondary">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card bg-secondary">
+            <div class="card-body bg-dark">
+              {% for entry in data %}
+                <div class="card  mb-3">
+                  <div class="card-header">
+                    <strong>{{entry['address']}}</strong>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <img src="{{entry['image']}}" class="img-thumbnail">
+                      </div>
+                      <div class="col">
+                        <p><strong>Title: </strong>{{entry['title']}}</p>
+                        <p><strong>Description: </strong>{{entry['description']}}</p>
+                        <p><strong>Published: </strong>{{entry['date']}}</p>
+                        <p><strong>Seller: </strong>{{entry['seller']}}</p>
+                        <h3><strong class="text-success">{{entry['price']}}</strong></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
