@@ -1,0 +1,14 @@
+# Create table
+CREATE TABLE posts(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT, post TEXT)
+
+# Insert
+INSERT INTO posts(title, post) VALUES("title", "post")
+
+# Select
+SELECT * FROM posts
+
+# Update
+UPDATE posts SET title="New title", post="New post" WHERE id=2
+
+# Delete
+DELETE FROM posts WHERE id=1
