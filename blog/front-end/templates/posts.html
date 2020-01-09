@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card mt-4">
+          <div class="card-body">
+            <a class="btn btn-success" href="/create">Add post</a>
+            {% for post in posts %}
+              <div class="card mt-3">
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col"><strong>{{post[1]}}</strong></div>
+                    <div class="col text-right">
+                      <a class="btn btn-primary" href="/edit?title={{post[1]}}&post={{post[2]}}&_id={{post[0]}}">Update</a>
+                      <a class="btn btn-danger" href="/delete/{{post[0]}}">Delete</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  {{post[2][0:500]}} 
+                  <a href="/post/{{post[0]}}">... show more</a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

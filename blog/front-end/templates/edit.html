@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card mt-4">
+          <div class="card-body">
+            <form id="post" method="get" action="/update/{{_id}}?title={{title}}&post={{post}}" class="form-group">
+              <input type="text" name="title" placeholder="Enter post title..." value="{{title}}" class="form-control"/>
+              <textarea name="post" class="form-control noresize mt-2" placeholder="Leave your post here..." rows="12">{{post}}</textarea>
+              <div class="row">
+                <div class="col-md-2 ml-auto">
+                  <button type="submit" class="btn btn-success col-md-12 mt-2">Update</button>
+                </div>
+              </div>
+            </form>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
