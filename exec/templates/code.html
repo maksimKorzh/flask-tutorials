@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Scpaper</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col">
+                <textarea name="source" class="form-control mb-2" rows="20">{{request.args.get('source')}}</textarea>
+                <button type="submit" class="btn btn-success">Run</button>
+              </div>
+              <div class="col">
+                <textarea class="form-control" rows="20">{{output}}</textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
