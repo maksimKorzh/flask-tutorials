@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+  <!-- User input form -->
+  <div class="input-group">
+    <input type="text" id="category" class="form-control col-3 mr-2">
+    <button id="scrape" class="btn btn-success">Scrape</button>
+    <p id="status" class="ml-4"></p>
+  </div>
+  
+  <!-- Output layout -->  
+  <div id="output" class="mt-4"></div>
+  
+  <script type="text/javascript">
+    // API POST request to init scraper settings file
+    $('#scrape').on('click', () => {
+      // update status
+      $('#status').text('Scraper is working...')
+    
+      // extract parameter from user input
+      var category = $('#category').val()
+
+      // API call
+      $.post('/run', {'category': category}, (res) => {
+        // update status
+        $('#status').text('')
+      
+        // loop over dataset
+        $.each(res.data , function(index, card) { 
+          var address = ''
+          var phone = ''
+          
+          if (card.Address != null)
+            address = card.Address
+          else
+            address = 'N/A'
+          
+          if (card.Phone != null)
+            phone = card.Phone
+          else
+            phone = 'phone is N/A'
+          
+          // generate content tags
+          var content = '<div class="card mb-3" style="max-width: 800px;">'
+          content += '<div class="row no-gutters">'
+          content += '<div class="col-md-8">'
+          content += '<div class="card-body">'
+          content += '<h5 class="card-title"><strong>' + 
+                     card.First_and_Last_Name + ' | ' +
+                     phone + '</strong></h5>'
+          content += '<small>' + address + '</small>'
+          content += '<p class="card-text">' + card.About + '</p>'
+          content += '</div></div></div></div>'
+          console.log(card);
+          
+          // append content dynamically
+          $('#output').append(content)
+        });
+        
+      })
+    })
+    
+  </script>
+{% endblock %}
